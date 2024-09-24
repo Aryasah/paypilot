@@ -30,9 +30,11 @@ jobs:
     needs: build
     runs-on: [aws-ec2]
     steps:
+      - name: Start Docker (if not running)
+        run: sudo service docker start
       - name: Pull Image from docker hub
-        run: docker pull aryasah30/paypilot
+        run: docker pull aryasah30/paypilot:latest
       - name: Delete old container
-        run: docker rm -f paypilot-container
+        run: docker rm -f paypilot-container || true
       - name: Run docker container
         run: docker run -d -p 8080:8080 --name paypilot-container aryasah/paypilot
