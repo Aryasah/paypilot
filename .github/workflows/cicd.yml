@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Start Docker (if not running)
         run: sudo service docker start
+      - name: Login to docker hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Pull Image from docker hub
         run: docker pull aryasah30/paypilot:latest
       - name: Delete old container
