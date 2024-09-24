@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/scheduled_payment")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://papilot.s3-website.ap-south-1.amazonaws.com"})
 public class ScheduledPaymentController {
 
 	private PaymentManagerService paymentManagerService;
